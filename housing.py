@@ -44,7 +44,7 @@ weights = np.ones((3,))
 
 for boom in range(100):
   currentCost = cost(normalizedX, weights, y)
-  if boom % 1 == 0:
+  if boom % 2 == 0:
     print(boom, 'iteration', weights[0], weights[1], weights[2])
     print('Cost', currentCost)
 
