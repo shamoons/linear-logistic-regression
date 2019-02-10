@@ -16,8 +16,6 @@ xnorm = sklearn.preprocessing.scale(x)
 scaleCoef = sklearn.preprocessing.StandardScaler().fit(x)
 mean = scaleCoef.mean_
 std = numpy.sqrt(scaleCoef.var_)
-print('stf')
-print(std)
 
 stuff = linearRegressor.fit(xnorm, y)
 
@@ -25,6 +23,3 @@ predictedX = [[(2100 - mean[0]) / std[0], (3 - mean[1]) / std[1]], [(1600 - mean
 yPrediction = linearRegressor.predict(predictedX)
 print('predictedX', predictedX)
 print('predict', yPrediction)
-
-
-# print(stuff.coef_, stuff.intercept_)

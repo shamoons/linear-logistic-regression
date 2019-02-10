@@ -9,13 +9,7 @@ def h(x, w):
   return sigmoid(np.dot(w.T, x))
 
 def cost(X, W, Y):
-  totalCost = 0
-  for i in range(Y.size):
-    diff = h(X[i], W) - Y[i]
-    squared = diff * diff
-    totalCost += squared
-  
-  return - totalCost / Y.size
+  return np.sum(Y * np.log(h(X, W)) + (1 - Y) * np.log(1 - h(X, W))) / (Y.size)
 
 alpha = 0.1
 iris_data = np.loadtxt('Iris-binary.csv', delimiter=',')
@@ -46,3 +40,6 @@ for iter in range(1000):
     weights[3] = weights[3] - (1 / outputY.size) * alpha * (errorDiff) * normalizedX[i][3]
     weights[4] = weights[4] - (1 / outputY.size) * alpha * (errorDiff) * normalizedX[i][4]
 
+predictions = h(normalizedX, weights)
+
+print(predictions)
