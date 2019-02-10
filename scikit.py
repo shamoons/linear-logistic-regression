@@ -21,10 +21,10 @@ print(std)
 
 stuff = linearRegressor.fit(xnorm, y)
 
-predictedX = [[(2100 - mean[0]) / std[0], (3 - mean[1]) / std[1]]]
+predictedX = [[(2100 - mean[0]) / std[0], (3 - mean[1]) / std[1]], [(1600 - mean[0]) / std[0], (2 - mean[1]) / std[1]]]
 yPrediction = linearRegressor.predict(predictedX)
 print('predictedX', predictedX)
 print('predict', yPrediction)
 
 
-print(stuff.coef_, stuff.intercept_)
+# print(stuff.coef_, stuff.intercept_)

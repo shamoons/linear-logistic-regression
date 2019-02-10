@@ -2,8 +2,6 @@ import numpy as np
 
 import pandas
 
-np.random.seed(1)
-
 alpha = 0.1
 
 def h(x, w):
@@ -42,8 +40,6 @@ normalizedX = np.ones((47, 3))
 normalizedX[:,1] = normX1
 normalizedX[:,2] = normX2
 
-np.savetxt('normalizedX.csv', normalizedX)
-
 weights = np.ones((3,))
 
 for boom in range(100):
@@ -54,14 +50,17 @@ for boom in range(100):
 
   for i in range(47):
     errorDiff = h(normalizedX[i], weights) - y[i]
-    weights[0] = weights[0] - alpha * (errorDiff) * normalizedX[i][0]
-    weights[1] = weights[1] - alpha * (errorDiff) * normalizedX[i][1]
-    weights[2] = weights[2] - alpha * (errorDiff) * normalizedX[i][2]
+    weights[0] = weights[0] - (1 / y.size) * alpha * (errorDiff) * normalizedX[i][0]
+    weights[1] = weights[1] - (1 / y.size) * alpha * (errorDiff) * normalizedX[i][1]
+    weights[2] = weights[2] - (1 / y.size) * alpha * (errorDiff) * normalizedX[i][2]
   
 print(weights)
 
-predictedX = [1, (2100 - avgX1) / stdX1, (3 - avgX2) / stdX2]
-firstPrediction = np.array(predictedX)
+firstPredictedX = [1, (2100 - avgX1) / stdX1, (3 - avgX2) / stdX2]
+firstPredictionX = np.array(firstPredictedX)
+secondPredictedX = [1, (1600 - avgX1) / stdX1, (2 - avgX2) / stdX2]
+secondPredictionX = np.array(secondPredictedX)
+firstPrediction = h(firstPredictionX, weights)
+secondPrediction = h(secondPredictionX, weights)
 print('firstPrediction', firstPrediction)
-firstPrediction = h(firstPrediction, weights)
-print(firstPrediction)
+print('secondPrediction', secondPrediction)
