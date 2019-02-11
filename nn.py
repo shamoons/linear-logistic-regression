@@ -4,10 +4,6 @@ import numpy as np
 
 X, Y = load_iris(return_X_y=True)
 
-print(X)
-print(Y)
-quit()
-
 def sigmoid(z):
   return np.power(1 + np.exp(-z), -1)
 
