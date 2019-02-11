@@ -1,16 +1,23 @@
-import numpy
-import pandas
+import numpy as np
 import sklearn
-# from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-dataset = pandas.read_csv('Iris-binary.csv', header=None)
+# Task 5
+dataset = np.loadtxt('Iris-binary.csv', delimiter=',')
 
-x = dataset.iloc[:, 1:5].values
-y = dataset.iloc[:, 5].values
+Y = dataset[:,5]
+X = dataset[:,1:4]
+model = LogisticRegression(random_state=0, solver='liblinear', multi_class='auto').fit(X, Y)
 
-logisticRegression = LogisticRegression(random_state=0, solver='liblinear', multi_class='auto')
+accuracy = model.score(X, Y)
 
-model = logisticRegression.fit(x, y)
+print('Accuracy', accuracy)
 
-print(model.score(x, y))
+
+# Task 6
+from sklearn.datasets import load_iris
+X, Y = load_iris(return_X_y=True)
+model = LogisticRegression(random_state=0, solver='lbfgs',max_iter=500, multi_class='multinomial').fit(X, Y)
+accuracy = model.score(X, Y)
+print('Accuracy', accuracy)
+
