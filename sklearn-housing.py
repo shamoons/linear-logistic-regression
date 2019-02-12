@@ -1,3 +1,4 @@
+# Task 3
 import numpy
 import matplotlib.pyplot as plot
 import pandas
@@ -19,7 +20,8 @@ std = numpy.sqrt(scaleCoef.var_)
 
 stuff = linearRegressor.fit(xnorm, y)
 
-predictedX = [[(2100 - mean[0]) / std[0], (3 - mean[1]) / std[1]], [(1600 - mean[0]) / std[0], (2 - mean[1]) / std[1]]]
+predictedX = [[(2100 - mean[0]) / std[0], (3 - mean[1]) / std[1]],
+              [(1600 - mean[0]) / std[0], (2 - mean[1]) / std[1]]]
 yPrediction = linearRegressor.predict(predictedX)
 print('predictedX', predictedX)
 print('predict', yPrediction)
